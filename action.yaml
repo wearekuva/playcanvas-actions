@@ -1,0 +1,34 @@
+name: 'PlayCanvas'
+description: 'Download a PlayCanvas project'
+inputs:
+  project-id:
+    description: 'The PlayCanvas project ID to download'
+    required: true
+  scenes:
+    description: 'A list of scene ids to be included in the app. When you specify scenes then the first scene in the list will be used as the initial scene of the application.'
+    required: true
+  version:
+    description: 'The version of the app. Can be a string up to 20 characters. If none supplied it will use the latest checkpooint'
+    required: false
+  branch: 
+    description: 'The id of the branch. If no id is specified the master branch will be used.'
+    required: false
+    default: 'master'
+  concatenate-scripts:
+    description: 'Set it to true if you want scripts to be concatenated'
+    required: false
+    default: true
+  minify-scripts:
+    description: 'Set it to true if you want scripts to be minified'
+    required: false
+    default: true
+  optimize-scene-format:
+    description: 'Set it to true if you want scenes to be in an optimized format'
+    required: false
+    default: 'true'
+outputs:
+  artifact-name: # id of output
+    description: 'The name of the artefact uploaded'
+runs:
+  using: 'node16'
+  main: 'index.js'
