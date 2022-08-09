@@ -7,7 +7,7 @@ try {
 
     // Define your donwload requirements
     const opts = {
-        project_id: core.getInput('project-id'),
+        project_id: parseInt(core.getInput('project-id')),
         name: core.getInput('name') || `playcanvas - ${core.getInput('project-id')}`,
         scenes: core.getInput('scenes').split(','),
         version: core.getInput('version'),

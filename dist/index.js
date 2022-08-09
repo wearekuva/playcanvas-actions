@@ -14457,7 +14457,7 @@ try {
 
     // Define your donwload requirements
     const opts = {
-        project_id: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('project-id'),
+        project_id: parseInt(_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('project-id')),
         name: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('name') || `playcanvas - ${_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('project-id')}`,
         scenes: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('scenes').split(','),
         version: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('version'),
