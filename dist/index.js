@@ -14469,7 +14469,7 @@ try {
     }
 
     // Get the PC access token
-    const token = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('playcanvas-access-token')// 'OqBw2CSL4PRIszURSMs9MaIwmCGEDkLK'
+    const token = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('playcanvas-access-token')
 
     // Download the app
     const { name, data, version } = await (0,_playcanvas_js__WEBPACK_IMPORTED_MODULE_3__/* .download */ .LR)(opts, token )

@@ -19,7 +19,7 @@ try {
     }
 
     // Get the PC access token
-    const token = core.getInput('playcanvas-access-token')// 'OqBw2CSL4PRIszURSMs9MaIwmCGEDkLK'
+    const token = core.getInput('playcanvas-access-token')
 
     // Download the app
     const { name, data, version } = await download(opts, token )
