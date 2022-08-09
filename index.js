@@ -31,7 +31,7 @@ try {
 
     // console.log('File Save complete')
 
-    core.setOutput('name', artifactName)
+    core.setOutput('name', name)
     core.setOutput('version', version)
     // core.setOutput('path', path);
 

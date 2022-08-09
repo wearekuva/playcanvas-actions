@@ -10571,7 +10571,7 @@ try {
 
     // console.log('File Save complete')
 
-    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('name', artifactName)
+    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('name', name)
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('version', version)
     // core.setOutput('path', path);
 
