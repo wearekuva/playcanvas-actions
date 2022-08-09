@@ -25,7 +25,7 @@ try {
     const { name, data, version } = await download(opts, token )
 
     // Save the file to the local system
-    const path = `./${name}-${version}.zip`
+    const path = `/${name}-${version}.zip`
     writeFileSync(path, data)
 
     console.log('File Save complete')

@@ -14475,7 +14475,7 @@ try {
     const { name, data, version } = await (0,_playcanvas_js__WEBPACK_IMPORTED_MODULE_3__/* .download */ .LR)(opts, token )
 
     // Save the file to the local system
-    const path = `./${name}-${version}.zip`
+    const path = `/${name}-${version}.zip`
     ;(0,fs__WEBPACK_IMPORTED_MODULE_2__.writeFileSync)(path, data)
 
     console.log('File Save complete')
