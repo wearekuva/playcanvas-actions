@@ -1,6 +1,4 @@
 import core from '@actions/core'
-import artifact from '@actions/artifact'
-import { writeFileSync } from "fs"
 import { download } from './playcanvas.js'
 
 try {
@@ -31,13 +29,10 @@ try {
     // const path = `/${name}-${version}.zip`
     // writeFileSync(path, data)
 
-    console.log('File Save complete')
+    // console.log('File Save complete')
 
-    // Upload the file as an artifact
-    const artifactClient = artifact.create()
-    const { artifactName } = await artifactClient.uploadArtifact(`${name}-${version}`, files, './')
-
-    core.setOutput('name', artifactName);
+    core.setOutput('name', artifactName)
+    core.setOutput('version', version)
     // core.setOutput('path', path);
 
 } catch (error) {
