@@ -14459,7 +14459,7 @@ try {
     const opts = {
         project_id: parseInt(_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('project-id')),
         name: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('name') || `playcanvas - ${_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('project-id')}`,
-        scenes: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('scenes').split(','),
+        scenes: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('scenes'),
         version: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('version'),
         branch: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('branch'),
         concatenateScripts: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('concatenate-scripts'),
@@ -14568,7 +14568,7 @@ const download = ( opts, token ) => {
         const conf = { headers: { Authorization: `Bearer ${token}` } }
         
         opts.version = opts.version || await getLatestVersion({ ...opts, conf })
-        opts.scenes = opts.scenes || (await listScenes({ ...opts, conf })).map(({ id }) => id)//.join(',')
+        opts.scenes = opts.scenes ? opts.scenes.split(', ') : (await listScenes({ ...opts, conf })).map(({ id }) => id)//.join(',')
 
         console.log(opts)
         const { id } = await node_modules_axios.post(`${PC_API_ROOT}/apps/download`, opts, conf)

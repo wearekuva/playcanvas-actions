@@ -9,7 +9,7 @@ try {
     const opts = {
         project_id: parseInt(core.getInput('project-id')),
         name: core.getInput('name') || `playcanvas - ${core.getInput('project-id')}`,
-        scenes: core.getInput('scenes').split(','),
+        scenes: core.getInput('scenes'),
         version: core.getInput('version'),
         branch: core.getInput('branch'),
         concatenateScripts: core.getBooleanInput('concatenate-scripts'),
