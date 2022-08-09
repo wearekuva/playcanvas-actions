@@ -1,5 +1,6 @@
 name: 'PlayCanvas'
 description: 'Download a PlayCanvas project'
+main: 'dist/index.js'
 inputs:
   project-id:
     description: 'The PlayCanvas project ID to download'
