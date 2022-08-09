@@ -1,6 +1,6 @@
 import core from '@actions/core'
 import artifact from '@actions/artifact'
-import { writeFile } from "fs"
+import { writeFileSync } from "fs"
 import { download } from './playcanvas.js'
 
 try {
@@ -26,7 +26,7 @@ try {
 
     // Save the file to the local system
     const path = `./${name}-${version}.zip`
-    writeFile(path, data)
+    writeFileSync(path, data)
 
     console.log('File Save complete')
 
