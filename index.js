@@ -22,20 +22,23 @@ try {
     const token = core.getInput('playcanvas-access-token')
 
     // Download the app
-    const { name, data, version } = await download(opts, token )
+    const { name, file, version } = await download(opts, token )
 
-    // Save the file to the local system
-    const path = `/${name}-${version}.zip`
-    writeFileSync(path, data)
+    // Save the files to the local system
+    const files = file.getEntries().map(entry => entry.entryName)
+    file.extractAllTo("./", true)
+
+    // const path = `/${name}-${version}.zip`
+    // writeFileSync(path, data)
 
     console.log('File Save complete')
 
     // Upload the file as an artifact
     const artifactClient = artifact.create()
-    const { artifactName } = await artifactClient.uploadArtifact(`${name}-${version}`, [path], '/')
+    const { artifactName } = await artifactClient.uploadArtifact(`${name}-${version}`, files, './')
 
     core.setOutput('name', artifactName);
-    core.setOutput('path', path);
+    // core.setOutput('path', path);
 
 } catch (error) {
 

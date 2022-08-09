@@ -1,6 +1,7 @@
 import { poll } from './utils.js'
 import axios from 'axios'
-// import arrayToBuffer from 'arraybuffer-to-buffer'
+import arrayToBuffer from 'arraybuffer-to-buffer'
+import Zip from 'adm-zip'
 
 // const TOKEN = process.env.PC_TOKEN
 // const PROJECT_ID = Number(process.env.PC_PROJECT_ID)
@@ -56,8 +57,11 @@ export const download = ( opts, token ) => {
             console.log('Downloading build...', opts.version, download_url)
 
             const data = await axios.get(download_url, { responseType: 'arraybuffer' }).then(asData)
+            const buffer = arrayToBuffer(data)
+            const file = new Zip(buffer)
             console.log('Download Complete')
-            resolve({ ...opts, data })
+            
+            resolve({ ...opts, file })
         }
     })
 }
