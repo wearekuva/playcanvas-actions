@@ -1,6 +1,5 @@
 name: 'PlayCanvas'
 description: 'Download a PlayCanvas project'
-main: 'dist/index.js'
 inputs:
   project-id:
     description: 'The PlayCanvas project ID to download'
@@ -38,4 +37,4 @@ outputs:
     description: 'The name of the artefact uploaded'
 runs:
   using: 'node16'
-  main: 'index.js'
+  main: 'dist/index.js'
