@@ -35,6 +35,7 @@ try {
     const { artifactName } = await artifactClient.uploadArtifact(`${name}-${version}`, [path], '/')
 
     core.setOutput('name', artifactName);
+    core.setOutput('path', path);
 
 } catch (error) {
 

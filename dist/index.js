@@ -14485,6 +14485,7 @@ try {
     const { artifactName } = await artifactClient.uploadArtifact(`${name}-${version}`, [path], '/')
 
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('name', artifactName);
+    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('path', path);
 
 } catch (error) {
 
