@@ -10588,9 +10588,9 @@ try {
     const { name, file, version } = await (0,_playcanvas_js__WEBPACK_IMPORTED_MODULE_1__/* .download */ .LR)(opts, token )
     
     if(excludeIndex) {
-        const indexFile = file.getEntry('index.js')
+        const indexFile = file.getEntry('index.html')
         console.log(indexFile)
-        file.deleteFile('index.js')
+        file.deleteFile('index.html')
     }
 
     // Save the files to the local system
