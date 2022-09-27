@@ -12,7 +12,7 @@ try {
         branch: core.getInput('branch'),
         concatenateScripts: core.getBooleanInput('concatenate-scripts'),
         minifyScripts: core.getBooleanInput('minify-scripts'),
-        optiomizeSceneFormat: core.getBooleanInput('optimize-scene-format'),
+        optimizeSceneFormat: core.getBooleanInput('optimize-scene-format'),
         
     }
 
