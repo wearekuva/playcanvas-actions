@@ -10587,7 +10587,11 @@ try {
     // Download the app
     const { name, file, version } = await (0,_playcanvas_js__WEBPACK_IMPORTED_MODULE_1__/* .download */ .LR)(opts, token )
     
-    if(excludeIndex) file.deleteFile(file.getEntry('index.js'))
+    if(excludeIndex) {
+        const indexFile = file.getEntry('index.js')
+        console.log(indexFile)
+        file.deleteFile('index.js')
+    }
 
     // Save the files to the local system
     file.extractAllTo("./", true)

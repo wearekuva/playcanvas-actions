@@ -24,7 +24,11 @@ try {
     // Download the app
     const { name, file, version } = await download(opts, token )
     
-    if(excludeIndex) file.deleteFile(file.getEntry('index.js'))
+    if(excludeIndex) {
+        const indexFile = file.getEntry('index.js')
+        console.log(indexFile)
+        file.deleteFile('index.js')
+    }
 
     // Save the files to the local system
     file.extractAllTo("./", true)
