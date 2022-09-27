@@ -32,6 +32,9 @@ inputs:
   playcanvas-access-token :
     description: 'The Access Token for your PlayCanvas account'
     required : true
+  excludeIndex :
+    description: 'When true, the default PlayCanvas index.html file is not downloaded'
+    default : false
 outputs:
   artifact-name: # id of output
     description: 'The name of the artefact uploaded'
