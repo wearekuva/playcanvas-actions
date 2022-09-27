@@ -15,12 +15,16 @@ try {
         optimizeSceneFormat: core.getBooleanInput('optimize-scene-format'),
         
     }
+    
+    const excludes = core.getBooleanInput('excludeIndex')
 
     // Get the PC access token
     const token = core.getInput('playcanvas-access-token')
 
     // Download the app
     const { name, file, version } = await download(opts, token )
+    
+    if(excludeIndex) file.deleteFile(file.getEntry('./index.js'))
 
     // Save the files to the local system
     file.extractAllTo("./", true)
