@@ -23,13 +23,7 @@ try {
     const { name, file, version } = await download(opts, token )
 
     // Save the files to the local system
-    const files = file.getEntries().map(entry => entry.entryName)
     file.extractAllTo("./", true)
-
-    // const path = `/${name}-${version}.zip`
-    // writeFileSync(path, data)
-
-    // console.log('File Save complete')
 
     core.setOutput('name', name)
     core.setOutput('version', version)
