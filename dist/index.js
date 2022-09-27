@@ -10579,7 +10579,7 @@ try {
         
     }
     
-    const excludes = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('excludeIndex')
+    const excludeIndex = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('excludeIndex')
 
     // Get the PC access token
     const token = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('playcanvas-access-token')
@@ -10587,7 +10587,7 @@ try {
     // Download the app
     const { name, file, version } = await (0,_playcanvas_js__WEBPACK_IMPORTED_MODULE_1__/* .download */ .LR)(opts, token )
     
-    if(excludeIndex) file.deleteFile(file.getEntry('./index.js'))
+    if(excludeIndex) file.deleteFile(file.getEntry('index.js'))
 
     // Save the files to the local system
     file.extractAllTo("./", true)
