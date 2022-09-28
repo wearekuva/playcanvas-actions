@@ -44,7 +44,7 @@ export const download = ( opts, token ) => {
         const conf = { headers: { Authorization: `Bearer ${token}` } }
         
         opts.version = opts.version || await getLatestVersion({ ...opts, conf })
-        opts.scenes = opts.scenes ? opts.scenes.split(', ') : (await listScenes({ ...opts, conf })).map(({ id }) => id)//.join(',')
+        opts.scenes = opts.scenes ? opts.scenes.split(', ').map(scene => parseInt(scene)) : (await listScenes({ ...opts, conf })).map(({ id }) => id)//.join(',')
 
         console.log(opts)
         const { id } = await axios.post(`${PC_API_ROOT}/apps/download`, opts, conf)
