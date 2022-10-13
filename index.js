@@ -9,7 +9,7 @@ try {
         name: core.getInput('name') || `playcanvas - ${core.getInput('project-id')}`,
         scenes: core.getInput('scenes'),
         version: core.getInput('version'),
-        branch_id : core.getInput('branch'),
+        branch : core.getInput('branch'),
         scripts_concatenate : core.getBooleanInput('concatenate-scripts'),
         scripts_minify : core.getBooleanInput('minify-scripts'),
         optimize_scene_format : core.getBooleanInput('optimize-scene-format'),

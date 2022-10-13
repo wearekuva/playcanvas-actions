@@ -10572,7 +10572,7 @@ try {
         name: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('name') || `playcanvas - ${_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('project-id')}`,
         scenes: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('scenes'),
         version: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('version'),
-        branch_id : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('branch'),
+        branch : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('branch'),
         scripts_concatenate : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('concatenate-scripts'),
         scripts_minify : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('minify-scripts'),
         optimize_scene_format : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('optimize-scene-format'),
