@@ -13,7 +13,7 @@ try {
         scripts_concatenate : core.getBooleanInput('concatenate-scripts'),
         scripts_minify : core.getBooleanInput('minify-scripts'),
         optimize_scene_format : core.getBooleanInput('optimize-scene-format'),
-        engine_version  : core.getBooleanInput('engine-version')
+        engine_version  : core.getInput('engine-version')
     }
     
     const excludeIndex = core.getBooleanInput('excludeIndex')
