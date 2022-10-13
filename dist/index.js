@@ -10572,11 +10572,11 @@ try {
         name: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('name') || `playcanvas - ${_actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('project-id')}`,
         scenes: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('scenes'),
         version: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('version'),
-        branch: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('branch'),
-        concatenateScripts: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('concatenate-scripts'),
-        minifyScripts: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('minify-scripts'),
-        optimizeSceneFormat: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('optimize-scene-format'),
-        
+        branch_id : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('branch'),
+        scripts_concatenate : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('concatenate-scripts'),
+        scripts_minify : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('minify-scripts'),
+        optimize_scene_format : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('optimize-scene-format'),
+        engine_version  : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('engine-version')
     }
     
     const excludeIndex = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('excludeIndex')
@@ -10620,7 +10620,7 @@ __nccwpck_require__.d(__webpack_exports__, {
   "LR": () => (/* binding */ download)
 });
 
-// UNUSED EXPORTS: getBranch, getLatestVersion, getPrimaryApp, listAssets, listBranches, listScenes, pollJob
+// UNUSED EXPORTS: getBranch, getLatestCheckpoint, getPrimaryApp, listAssets, listBranches, listScenes, pollJob
 
 ;// CONCATENATED MODULE: ./utils.js
 async function poll (fn, fnCondition, ms) {
@@ -10654,7 +10654,7 @@ const PC_API_ROOT = 'https://playcanvas.com/api'
 
 const asData = ({ data }) => data
 const listBranches = async ({ conf, project_id}) =>
-  node_modules_axios.get(`${PC_API_ROOT}/projects/${project_id}/branches`, conf).then(asData)
+  axios.get(`${PC_API_ROOT}/projects/${project_id}/branches`, conf).then(asData)
 
 const listScenes = async ({ project_id, conf }) =>
   node_modules_axios.get(`${PC_API_ROOT}/projects/${project_id}/scenes`, conf).then(asData).then(({ result }) => result)
@@ -10673,7 +10673,7 @@ const getBranch = async opts => {
     return result.filter(({ name }) => name === optsDefaultBranch.branch)[0]
 }
 
-const getLatestVersion = async opts => {
+const getLatestCheckpoint = async opts => {
   const { latestCheckpointId } = await getBranch(opts)
   const checkpoint = latestCheckpointId.split('-')[0]
   return checkpoint
@@ -10687,10 +10687,8 @@ const download = ( opts, token ) => {
 
         const conf = { headers: { Authorization: `Bearer ${token}` } }
         
-        opts.version = opts.version || await getLatestVersion({ ...opts, conf })
         opts.scenes = opts.scenes ? opts.scenes.split(', ').map(scene => parseInt(scene)) : (await listScenes({ ...opts, conf })).map(({ id }) => id)//.join(',')
 
-        console.log(opts)
         const { id } = await node_modules_axios.post(`${PC_API_ROOT}/apps/download`, opts, conf)
             .then(asData)
 
@@ -10698,7 +10696,7 @@ const download = ( opts, token ) => {
             console.log('Creating build...', id)
             const validateDownload = ({ status }) => status !== 'complete'
             const { download_url } = await poll(async _ => pollJob(id, conf), validateDownload, 1000).then(asData)
-            console.log('Downloading build...', opts.version, download_url)
+            console.log('Downloading build...', download_url)
 
             const data = await node_modules_axios.get(download_url, { responseType: 'arraybuffer' }).then(asData)
             const buffer = arraybuffer_to_buffer(data)

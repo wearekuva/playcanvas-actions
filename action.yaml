@@ -28,7 +28,10 @@ inputs:
   optimize-scene-format:
     description: 'Set it to true if you want scenes to be in an optimized format'
     required: false
-    default: 'true'
+    default: true
+  engine-version:
+    description: 'Set it to a Engine version string if a specific version is needed for the app.'
+    required: false
   playcanvas-access-token :
     description: 'The Access Token for your PlayCanvas account'
     required : true

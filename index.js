@@ -9,11 +9,11 @@ try {
         name: core.getInput('name') || `playcanvas - ${core.getInput('project-id')}`,
         scenes: core.getInput('scenes'),
         version: core.getInput('version'),
-        branch: core.getInput('branch'),
-        concatenateScripts: core.getBooleanInput('concatenate-scripts'),
-        minifyScripts: core.getBooleanInput('minify-scripts'),
-        optimizeSceneFormat: core.getBooleanInput('optimize-scene-format'),
-        
+        branch_id : core.getInput('branch'),
+        scripts_concatenate : core.getBooleanInput('concatenate-scripts'),
+        scripts_minify : core.getBooleanInput('minify-scripts'),
+        optimize_scene_format : core.getBooleanInput('optimize-scene-format'),
+        engine_version  : core.getBooleanInput('engine-version')
     }
     
     const excludeIndex = core.getBooleanInput('excludeIndex')

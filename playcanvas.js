@@ -29,7 +29,7 @@ export const getBranch = async opts => {
     return result.filter(({ name }) => name === optsDefaultBranch.branch)[0]
 }
 
-export const getLatestVersion = async opts => {
+export const getLatestCheckpoint = async opts => {
   const { latestCheckpointId } = await getBranch(opts)
   const checkpoint = latestCheckpointId.split('-')[0]
   return checkpoint
@@ -43,10 +43,8 @@ export const download = ( opts, token ) => {
 
         const conf = { headers: { Authorization: `Bearer ${token}` } }
         
-        opts.version = opts.version || await getLatestVersion({ ...opts, conf })
         opts.scenes = opts.scenes ? opts.scenes.split(', ').map(scene => parseInt(scene)) : (await listScenes({ ...opts, conf })).map(({ id }) => id)//.join(',')
 
-        console.log(opts)
         const { id } = await axios.post(`${PC_API_ROOT}/apps/download`, opts, conf)
             .then(asData)
 
@@ -54,7 +52,7 @@ export const download = ( opts, token ) => {
             console.log('Creating build...', id)
             const validateDownload = ({ status }) => status !== 'complete'
             const { download_url } = await poll(async _ => pollJob(id, conf), validateDownload, 1000).then(asData)
-            console.log('Downloading build...', opts.version, download_url)
+            console.log('Downloading build...', download_url)
 
             const data = await axios.get(download_url, { responseType: 'arraybuffer' }).then(asData)
             const buffer = arrayToBuffer(data)
