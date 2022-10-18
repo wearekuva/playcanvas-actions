@@ -10654,7 +10654,7 @@ const PC_API_ROOT = 'https://playcanvas.com/api'
 
 const asData = ({ data }) => data
 const listBranches = async ({ conf, project_id}) =>
-  axios.get(`${PC_API_ROOT}/projects/${project_id}/branches`, conf).then(asData)
+  node_modules_axios.get(`${PC_API_ROOT}/projects/${project_id}/branches`, conf).then(asData)
 
 const listScenes = async ({ project_id, conf }) =>
   node_modules_axios.get(`${PC_API_ROOT}/projects/${project_id}/scenes`, conf).then(asData).then(({ result }) => result)
@@ -10703,7 +10703,8 @@ const download = ( opts, token ) => {
             const file = new adm_zip(buffer)
             console.log('Download Complete')
             
-            resolve({ ...opts, file })
+            const version = await getLatestCheckpoint({ ...opts, conf })
+            resolve({ ...opts, file, version })
         }
     })
 }

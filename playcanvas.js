@@ -59,7 +59,8 @@ export const download = ( opts, token ) => {
             const file = new Zip(buffer)
             console.log('Download Complete')
             
-            resolve({ ...opts, file })
+            const version = await getLatestCheckpoint({ ...opts, conf })
+            resolve({ ...opts, file, version })
         }
     })
 }
