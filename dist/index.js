@@ -10576,8 +10576,11 @@ try {
         scripts_concatenate : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('concatenate-scripts'),
         scripts_minify : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('minify-scripts'),
         optimize_scene_format : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('optimize-scene-format'),
-        engine_version  : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('engine-version')
+        
     }
+    
+    const engineVersion = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('engine-version')
+    if(engineVersion) opts.engine_version = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('engine-version')
     
     const excludeIndex = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('excludeIndex')
 
