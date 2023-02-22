@@ -12,7 +12,7 @@ try {
         branch : core.getInput('branch'),
         scripts_concatenate : core.getBooleanInput('concatenate-scripts'),
         scripts_minify : core.getBooleanInput('minify-scripts'),
-        optimize_scene_format : core.getBooleanInput('optimize-scene-format'),
+        optimize_scene_format : core.getBooleanInput('optimize-scene-format')
         
     }
     
@@ -34,7 +34,8 @@ try {
     }
 
     // Save the files to the local system
-    file.extractAllTo("./", true)
+    const dir = core.getInput('dir')
+    file.extractAllTo(dir, true)
 
     core.setOutput('name', name)
     core.setOutput('version', version)
