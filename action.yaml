@@ -38,6 +38,9 @@ inputs:
   excludeIndex :
     description: 'When true, the default PlayCanvas index.html file is not downloaded'
     default : false
+  dir :
+    description: 'The relative directory to download the project into'
+    default : './'
 outputs:
   artifact-name: # id of output
     description: 'The name of the artefact uploaded'
