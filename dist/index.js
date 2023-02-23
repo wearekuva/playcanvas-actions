@@ -10575,7 +10575,7 @@ try {
         branch : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('branch'),
         scripts_concatenate : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('concatenate-scripts'),
         scripts_minify : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('minify-scripts'),
-        optimize_scene_format : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('optimize-scene-format'),
+        optimize_scene_format : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('optimize-scene-format')
         
     }
     
@@ -10597,7 +10597,8 @@ try {
     }
 
     // Save the files to the local system
-    file.extractAllTo("./", true)
+    const dir = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('dir')
+    file.extractAllTo(dir, true)
 
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('name', name)
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('version', version)
