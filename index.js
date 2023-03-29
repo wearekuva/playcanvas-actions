@@ -4,7 +4,8 @@ import { minify } from "terser";
 
 async function minifyFile(file, entry, content, opts){
     const minified = await minify(content, opts)
-    file.updateFile(entry, minified)
+    // console.log(minified)
+    file.updateFile(entry.entryName, minified)
 }
 
 try {
