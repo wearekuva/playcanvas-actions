@@ -1,6 +1,6 @@
 import core from '@actions/core'
 import { download } from './playcanvas.js'
-const { minify } = require("terser");
+import { minify } from "terser";
 
 async function minifyFile(file, content, opts){
     const minified = await minify(content, opts)
