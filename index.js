@@ -2,9 +2,10 @@ import core from '@actions/core'
 import { download } from './playcanvas.js'
 import { minify } from "terser";
 
-async function minifyFile(file, entry, content, opts){
+async function minifyFile(dir, entry, content, opts){
     const { code } = await minify(content, opts)
-    console.log(code)
+    // console.log(code)
+    writeFileSync( dir + entry.entryName, code)
     file.updateFile(entry.entryName, code)
 }
 
@@ -40,6 +41,10 @@ try {
         file.deleteFile('index.html')
     }
 
+    // Save the files to the local system
+    const dir = core.getInput('dir')
+    file.extractAllTo(dir, true)
+
     // Minify + mangle
     if(minifyScripts) {
         var zipEntries = file.getEntries();
@@ -48,15 +53,12 @@ try {
             if (entryName.substr(-3) === ".js") {
                 const code = entry.getData().toString("utf8")
                 // console.log('minifying', entryName, mangleScripts)
-                minifyFile(file, entry, code, { mangle : mangleScripts })
-                console.log(entry.getData().toString("utf8"))
+                minifyFile(dir, entry, code, { mangle : mangleScripts })
+                // console.log(entry.getData().toString("utf8"))
             }
         });
     }
 
-    // Save the files to the local system
-    const dir = core.getInput('dir')
-    file.extractAllTo(dir, true)
 
     core.setOutput('name', name)
     core.setOutput('version', version)

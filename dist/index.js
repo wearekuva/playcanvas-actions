@@ -10566,9 +10566,10 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 
 
-async function minifyFile(file, entry, content, opts){
+async function minifyFile(dir, entry, content, opts){
     const { code } = await (0,terser__WEBPACK_IMPORTED_MODULE_2__/* .minify */ .Sf)(content, opts)
-    console.log(code)
+    // console.log(code)
+    writeFileSync( dir + entry.entryName, code)
     file.updateFile(entry.entryName, code)
 }
 
@@ -10604,6 +10605,10 @@ try {
         file.deleteFile('index.html')
     }
 
+    // Save the files to the local system
+    const dir = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('dir')
+    file.extractAllTo(dir, true)
+
     // Minify + mangle
     if(minifyScripts) {
         var zipEntries = file.getEntries();
@@ -10612,15 +10617,12 @@ try {
             if (entryName.substr(-3) === ".js") {
                 const code = entry.getData().toString("utf8")
                 // console.log('minifying', entryName, mangleScripts)
-                minifyFile(file, entry, code, { mangle : mangleScripts })
-                console.log(entry.getData().toString("utf8"))
+                minifyFile(dir, entry, code, { mangle : mangleScripts })
+                // console.log(entry.getData().toString("utf8"))
             }
         });
     }
 
-    // Save the files to the local system
-    const dir = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('dir')
-    file.extractAllTo(dir, true)
 
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('name', name)
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput('version', version)
