@@ -25,6 +25,10 @@ inputs:
     description: 'Set it to true if you want scripts to be minified'
     required: false
     default: true
+  mangle-scripts:
+    description: 'Mangles scripts properties when true and if minify scripts is true'
+    required: false
+    default: false
   optimize-scene-format:
     description: 'Set it to true if you want scenes to be in an optimized format'
     required: false

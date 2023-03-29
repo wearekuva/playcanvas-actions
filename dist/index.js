@@ -10563,6 +10563,12 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 /* harmony import */ var _playcanvas_js__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(159);
 
 
+const { minify } = require("terser");
+
+async function minifyFile(file, content, opts){
+    const minified = await minify(content, opts)
+    file.updateFile(entry, minified)
+}
 
 try {
 
@@ -10574,10 +10580,10 @@ try {
         version: _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('version'),
         branch : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('branch'),
         scripts_concatenate : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('concatenate-scripts'),
-        scripts_minify : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('minify-scripts'),
         optimize_scene_format : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('optimize-scene-format')
-        
     }
+    const mangleScripts = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('mangleScripts')
+    const minifyScripts = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('minify-scripts')
     
     const engineVersion = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('engine-version')
     if(engineVersion) opts.engine_version = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('engine-version')
@@ -10591,9 +10597,22 @@ try {
     const { name, file, version } = await (0,_playcanvas_js__WEBPACK_IMPORTED_MODULE_1__/* .download */ .LR)(opts, token )
     
     if(excludeIndex) {
-        const indexFile = file.getEntry('index.html')
-        console.log(indexFile)
+        // const indexFile = file.getEntry('index.html')
+        // console.log(indexFile)
         file.deleteFile('index.html')
+    }
+
+    // Minify + mangle
+    if(minifyScripts) {
+        var zipEntries = file.getEntries();
+        zipEntries.forEach(entry => {
+            const entryName = entry.entryName
+            if (entryName.substr(-3) === ".js") {
+                const code = entry.getData().toString("utf8") 
+                minifyFile(file, code, { mangle : mangleScripts })
+                
+            }
+        });
     }
 
     // Save the files to the local system

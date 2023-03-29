@@ -13,7 +13,7 @@
     "url": "git+https://github.com/wearekuva/playcanvas-actions.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "KUVA",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/wearekuva/playcanvas-actions/issues"
@@ -25,6 +25,7 @@
     "@actions/github": "^5.0.3",
     "adm-zip": "^0.5.9",
     "arraybuffer-to-buffer": "^0.0.7",
-    "axios": "^0.27.2"
+    "axios": "^0.27.2",
+    "terser": "^5.16.8"
   }
 }
