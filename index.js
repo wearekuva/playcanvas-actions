@@ -46,7 +46,7 @@ try {
     const dir = core.getInput('dir')
     file.extractAllTo(dir, true)
 
-    const excludeFiles = ['playcanvas-stable.min.js']
+    const excludeFiles = ['playcanvas-stable.min.js', '__loading__.js']
 
     // Minify + mangle
     if(minifyScripts) {

@@ -10611,7 +10611,7 @@ try {
     const dir = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('dir')
     file.extractAllTo(dir, true)
 
-    const excludeFiles = ['playcanvas-stable.min.js']
+    const excludeFiles = ['playcanvas-stable.min.js', '__loading__.js']
 
     // Minify + mangle
     if(minifyScripts) {
