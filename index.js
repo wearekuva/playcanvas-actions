@@ -4,6 +4,7 @@ import { minify } from "terser";
 
 async function minifyFile(file, content, opts){
     const minified = await minify(content, opts)
+    console.log('code', minified)
     file.updateFile(entry, minified)
 }
 
@@ -45,7 +46,8 @@ try {
         zipEntries.forEach(entry => {
             const entryName = entry.entryName
             if (entryName.substr(-3) === ".js") {
-                const code = entry.getData().toString("utf8") 
+                const code = entry.getData().toString("utf8")
+                console.log('minifying', entryName)
                 minifyFile(file, code, { mangle : mangleScripts })
                 
             }
