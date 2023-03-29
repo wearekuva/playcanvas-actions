@@ -46,9 +46,9 @@ try {
             const entryName = entry.entryName
             if (entryName.substr(-3) === ".js") {
                 const code = entry.getData().toString("utf8")
-                console.log('minifying', entryName)
+                console.log('minifying', entryName, mangleScripts)
                 minifyFile(file, entry, code, { mangle : mangleScripts })
-                
+                console.log(entry.getData().toString("utf8"))
             }
         });
     }
