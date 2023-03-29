@@ -46,12 +46,14 @@ try {
     const dir = core.getInput('dir')
     file.extractAllTo(dir, true)
 
+    const excludeFiles = ['playcanvas-stable.min.js']
+
     // Minify + mangle
     if(minifyScripts) {
         var zipEntries = file.getEntries();
         zipEntries.forEach(entry => {
             const entryName = entry.entryName
-            if (entryName.substr(-3) === ".js") {
+            if (entryName.substr(-3) === ".js" && !excludeFiles.includes(entry.name)) {
                 const code = entry.getData().toString("utf8")
                 // console.log('minifying', entryName, mangleScripts)
                 minifyFile(dir, entry, code, { mangle : mangleScripts ? { properties: true, reserved: ['pc'] } : false })
