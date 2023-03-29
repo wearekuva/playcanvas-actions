@@ -10583,7 +10583,7 @@ try {
         scripts_concatenate : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('concatenate-scripts'),
         optimize_scene_format : _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('optimize-scene-format')
     }
-    const mangleScripts = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('mangleScripts')
+    const mangleScripts = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('mangle-scripts')
     const minifyScripts = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getBooleanInput('minify-scripts')
     
     const engineVersion = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('engine-version')

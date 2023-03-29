@@ -19,7 +19,7 @@ try {
         scripts_concatenate : core.getBooleanInput('concatenate-scripts'),
         optimize_scene_format : core.getBooleanInput('optimize-scene-format')
     }
-    const mangleScripts = core.getBooleanInput('mangleScripts')
+    const mangleScripts = core.getBooleanInput('mangle-scripts')
     const minifyScripts = core.getBooleanInput('minify-scripts')
     
     const engineVersion = core.getInput('engine-version')
