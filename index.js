@@ -4,7 +4,7 @@ import { minify } from "terser";
 
 async function minifyFile(file, entry, content, opts){
     const minified = await minify(content, opts)
-    // console.log(minified)
+    console.log(minified)
     file.updateFile(entry.entryName, minified)
 }
 
@@ -47,7 +47,7 @@ try {
             const entryName = entry.entryName
             if (entryName.substr(-3) === ".js") {
                 const code = entry.getData().toString("utf8")
-                console.log('minifying', entryName, mangleScripts)
+                // console.log('minifying', entryName, mangleScripts)
                 minifyFile(file, entry, code, { mangle : mangleScripts })
                 console.log(entry.getData().toString("utf8"))
             }
