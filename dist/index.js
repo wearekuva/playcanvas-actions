@@ -10572,7 +10572,7 @@ async function minifyFile(dir, entry, content, opts){
     const { code } = await (0,terser__WEBPACK_IMPORTED_MODULE_2__/* .minify */ .Sf)(content, opts)
     // console.log(code)
     ;(0,fs__WEBPACK_IMPORTED_MODULE_3__.writeFileSync)( dir + entry.entryName, code)
-    file.updateFile(entry.entryName, code)
+    // file.updateFile(entry.entryName, code)
 }
 
 try {

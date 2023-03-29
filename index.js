@@ -7,7 +7,7 @@ async function minifyFile(dir, entry, content, opts){
     const { code } = await minify(content, opts)
     // console.log(code)
     writeFileSync( dir + entry.entryName, code)
-    file.updateFile(entry.entryName, code)
+    // file.updateFile(entry.entryName, code)
 }
 
 try {
