@@ -1,6 +1,7 @@
 import core from '@actions/core'
 import { download } from './playcanvas.js'
 import { minify } from "terser";
+import { writeFileSync } from 'fs'
 
 async function minifyFile(dir, entry, content, opts){
     const { code } = await minify(content, opts)

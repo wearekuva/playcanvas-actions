@@ -10562,6 +10562,8 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 /* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(6140);
 /* harmony import */ var _playcanvas_js__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(159);
 /* harmony import */ var terser__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(4410);
+/* harmony import */ var fs__WEBPACK_IMPORTED_MODULE_3__ = __nccwpck_require__(7147);
+
 
 
 
@@ -10569,7 +10571,7 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 async function minifyFile(dir, entry, content, opts){
     const { code } = await (0,terser__WEBPACK_IMPORTED_MODULE_2__/* .minify */ .Sf)(content, opts)
     // console.log(code)
-    writeFileSync( dir + entry.entryName, code)
+    ;(0,fs__WEBPACK_IMPORTED_MODULE_3__.writeFileSync)( dir + entry.entryName, code)
     file.updateFile(entry.entryName, code)
 }
 
