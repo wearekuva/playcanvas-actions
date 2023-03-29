@@ -3,9 +3,9 @@ import { download } from './playcanvas.js'
 import { minify } from "terser";
 
 async function minifyFile(file, entry, content, opts){
-    const minified = await minify(content, opts)
-    console.log(minified)
-    file.updateFile(entry.entryName, minified)
+    const { code } = await minify(content, opts)
+    console.log(code)
+    file.updateFile(entry.entryName, code)
 }
 
 try {
