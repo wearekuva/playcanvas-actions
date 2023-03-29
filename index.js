@@ -2,9 +2,8 @@ import core from '@actions/core'
 import { download } from './playcanvas.js'
 import { minify } from "terser";
 
-async function minifyFile(file, content, opts){
+async function minifyFile(file, entry, content, opts){
     const minified = await minify(content, opts)
-    console.log('code', minified)
     file.updateFile(entry, minified)
 }
 
@@ -48,7 +47,7 @@ try {
             if (entryName.substr(-3) === ".js") {
                 const code = entry.getData().toString("utf8")
                 console.log('minifying', entryName)
-                minifyFile(file, code, { mangle : mangleScripts })
+                minifyFile(file, entry, code, { mangle : mangleScripts })
                 
             }
         });
