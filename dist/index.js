@@ -10568,7 +10568,7 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 async function minifyFile(file, entry, content, opts){
     const minified = await (0,terser__WEBPACK_IMPORTED_MODULE_2__/* .minify */ .Sf)(content, opts)
-    // console.log(minified)
+    console.log(minified)
     file.updateFile(entry.entryName, minified)
 }
 
@@ -10611,7 +10611,7 @@ try {
             const entryName = entry.entryName
             if (entryName.substr(-3) === ".js") {
                 const code = entry.getData().toString("utf8")
-                console.log('minifying', entryName, mangleScripts)
+                // console.log('minifying', entryName, mangleScripts)
                 minifyFile(file, entry, code, { mangle : mangleScripts })
                 console.log(entry.getData().toString("utf8"))
             }
