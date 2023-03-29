@@ -10567,9 +10567,9 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 
 async function minifyFile(file, entry, content, opts){
-    const minified = await (0,terser__WEBPACK_IMPORTED_MODULE_2__/* .minify */ .Sf)(content, opts)
-    console.log(minified)
-    file.updateFile(entry.entryName, minified)
+    const { code } = await (0,terser__WEBPACK_IMPORTED_MODULE_2__/* .minify */ .Sf)(content, opts)
+    console.log(code)
+    file.updateFile(entry.entryName, code)
 }
 
 try {
