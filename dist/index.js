@@ -10621,7 +10621,7 @@ try {
             if (entryName.substr(-3) === ".js" && !excludeFiles.includes(entry.name)) {
                 const code = entry.getData().toString("utf8")
                 // console.log('minifying', entryName, mangleScripts)
-                minifyFile(dir, entry, code, { mangle : mangleScripts ? { properties: true, reserved: ['pc'] } : false })
+                minifyFile(dir, entry, code, { mangle : mangleScripts ? { properties: false, reserved: ['pc'] } : false })
                 // console.log(entry.getData().toString("utf8"))
             }
         });
